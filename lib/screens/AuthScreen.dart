@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:harmony_blog/screens/HomeScreen.dart';
 import '/utils/auth.dart';
 
 class AuthScreen extends StatelessWidget {
@@ -6,6 +8,18 @@ class AuthScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      if (user == null) {
+        print('User is currently signed out!');
+      } else {
+        print('User is signed in!');
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
+        );
+      }
+    });
+
     return Scaffold(
         backgroundColor: Color(0xfff5ebff),
         body: Center(

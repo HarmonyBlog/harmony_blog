@@ -14,10 +14,6 @@ class ApplicationState extends ChangeNotifier {
   }
 
   Future<void> init() async {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-
     // FirebaseFirestore.instance
     //     .collection('attendees')
     //     .where('attending', isEqualTo: true)
