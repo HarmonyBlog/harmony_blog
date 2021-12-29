@@ -38,4 +38,11 @@ class ApplicationState extends ChangeNotifier {
 
   String? _email;
   String? get email => _email;
+
+  int _homeTabIndex = 0;
+  int get homeTabIndex => _homeTabIndex;
+  void sethomeTabIndex(int index) {
+    _homeTabIndex = index;
+    notifyListeners();
+  }
 }
