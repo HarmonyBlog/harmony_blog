@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:harmony_blog/screens/AuthScreen.dart';
+import 'package:provider/provider.dart';
+
+import '/screens/AuthScreen.dart';
+import '/provider/appStateProvider.dart';
 
 void main() {
-  runApp(HarmonyBlog());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ApplicationState(),
+      builder: (context, _) => HarmonyBlog(),
+    ),
+  );
 }
 
 class HarmonyBlog extends StatelessWidget {

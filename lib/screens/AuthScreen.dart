@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '/utils/auth.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({Key? key}) : super(key: key);
@@ -40,9 +41,9 @@ class AuthScreen extends StatelessWidget {
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)))),
                   child: Text('Sign In With IITM Google Account'),
-                  onPressed: () => {},
+                  onPressed: () => {signInWithGoogle()},
                 ),
-              )
+              ),
             ],
           ),
         ));
