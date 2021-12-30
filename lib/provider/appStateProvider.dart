@@ -1,12 +1,10 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
-import '../firebase_options.dart';
+import 'package:harmony_blog/model/post.dart';
+import '../model/post.dart';
 
 class ApplicationState extends ChangeNotifier {
   ApplicationState() {
@@ -14,14 +12,27 @@ class ApplicationState extends ChangeNotifier {
   }
 
   Future<void> init() async {
-    // FirebaseFirestore.instance
-    //     .collection('attendees')
-    //     .where('attending', isEqualTo: true)
-    //     .snapshots()
-    //     .listen((snapshot) {
-    //   _attendees = snapshot.docs.length;
-    //   notifyListeners();
-    // });
+    FirebaseFirestore.instance
+        .collection('posts')
+        .snapshots()
+        .listen((snapshot) {
+      _posts = [];
+      for (final document in snapshot.docs) {
+        _posts.add(
+          Post(
+            id: document.id,
+            createdAt: document.data()['createdAt'] as String,
+            imageUrl: document.data()['imageUrl'] as String,
+            userId: document.data()['userId'] as String,
+            title: document.data()['title'] as String,
+            desc: document.data()['desc'] as String,
+          ),
+        );
+      }
+
+      _isPostLoading = false;
+      notifyListeners();
+    });
 
     FirebaseAuth.instance.userChanges().listen((user) {
       if (user != null) {
@@ -32,6 +43,12 @@ class ApplicationState extends ChangeNotifier {
       notifyListeners();
     });
   }
+
+  bool _isPostLoading = true;
+  bool get isPostLoading => _isPostLoading;
+
+  List<Post> _posts = <Post>[];
+  List<Post> get posts => _posts;
 
   bool _loginState = false;
   bool get loginState => _loginState;
