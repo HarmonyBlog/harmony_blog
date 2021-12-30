@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:harmony_blog/screens/HomeScreen.dart';
 import '/utils/auth.dart';
@@ -9,10 +10,21 @@ class AuthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      CollectionReference users =
+          FirebaseFirestore.instance.collection('users');
       if (user == null) {
         print('User is currently signed out!');
       } else {
-        print('User is signed in!');
+        users
+            .doc(user.uid)
+            .set({
+              'displayName': user.displayName,
+              'email': user.email,
+              'photoURL': user.photoURL,
+              'uid': user.uid
+            })
+            .then((value) => print("User Added"))
+            .catchError((error) => print("Failed to add user: $error"));
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => const HomeScreen()),
