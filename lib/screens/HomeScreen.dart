@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:harmony_blog/screens/NewPostView.dart';
-import 'package:harmony_blog/screens/TimelineView.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:harmony_blog/screens/AuthScreen.dart';
 import 'package:provider/provider.dart';
 
 import 'package:harmony_blog/provider/appStateProvider.dart';
@@ -10,6 +10,16 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      if (user == null) {
+        print('User is currently signed out!');
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const AuthScreen()),
+        );
+      } else {}
+    });
+
     return Consumer<ApplicationState>(
       builder: (context, appState, _) => Scaffold(
         backgroundColor: Color(0xfff5ebff),

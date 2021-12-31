@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
+import 'package:harmony_blog/screens/ProfileView.dart';
 import 'package:random_string/random_string.dart';
 
 import 'package:harmony_blog/screens/NewPostView.dart';
@@ -108,5 +109,5 @@ class ApplicationState extends ChangeNotifier {
     } else {}
   }
 
-  List<Widget> view = [TimelineView(), NewPostView(), NewPostView()];
+  List<Widget> view = [TimelineView(), NewPostView(), ProfileView()];
 }
