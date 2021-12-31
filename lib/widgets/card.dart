@@ -14,7 +14,7 @@ class PostCard extends StatelessWidget {
       onTap: () => {},
       splashColor: Colors.blue.withAlpha(30),
       child: Container(
-        height: 250,
+        height: 300,
         child: Column(
           children: <Widget>[
             // TODO: Make this a Hero widget so we can transition to it?

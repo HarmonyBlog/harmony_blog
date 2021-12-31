@@ -57,11 +57,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBefU4zOztxnoRdBlxCLg66TZLAiqruekM',
-    appId: '1:474383329420:ios:79bc7e36941a9d638bf3a9',
+    appId: '1:474383329420:ios:28a177a0524c76e98bf3a9',
     messagingSenderId: '474383329420',
     projectId: 'harmony-2112c',
     storageBucket: 'harmony-2112c.appspot.com',
-    iosClientId: '474383329420-q2p627lfrvdqs8qrrgsj6u4kri9bnn86.apps.googleusercontent.com',
-    iosBundleId: 'org.iitm.harmonyBlog',
+    androidClientId: '474383329420-n0i7baoan9ve2fma6qccd8bj0j2fancc.apps.googleusercontent.com',
+    iosClientId: '474383329420-aro9pokku96va5sv0t59flnps5j01476.apps.googleusercontent.com',
+    iosBundleId: 'com.iitm.harmonyBlog',
   );
 }

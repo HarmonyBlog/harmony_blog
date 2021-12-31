@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:harmony_blog/screens/NewPostView.dart';
 import 'package:harmony_blog/screens/TimelineView.dart';
 import 'package:provider/provider.dart';
 
@@ -12,7 +13,7 @@ class HomeScreen extends StatelessWidget {
     return Consumer<ApplicationState>(
       builder: (context, appState, _) => Scaffold(
         backgroundColor: Color(0xfff5ebff),
-        body: Center(child: TimelineView()),
+        body: Center(child: appState.view[appState.homeTabIndex]),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: appState.homeTabIndex,
           onTap: appState.sethomeTabIndex,
