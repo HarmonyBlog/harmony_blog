@@ -26,7 +26,17 @@ class HomeScreen extends StatelessWidget {
         body: Center(child: appState.view[appState.homeTabIndex]),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: appState.homeTabIndex,
-          onTap: appState.sethomeTabIndex,
+          onTap: (index) => {
+            if (!FirebaseAuth.instance.currentUser!.email!
+                    .contains('@student.onlinedegree.iitm.ac.in') &&
+                index == 1)
+              {
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('You Can Only Post With IITM Mail Id')))
+              }
+            else
+              {appState.sethomeTabIndex(index)}
+          },
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),

@@ -19,7 +19,6 @@ class NewPostView extends StatelessWidget {
                   AppBar(
                     leading: IconButton(
                       icon: const Icon(Icons.chevron_left),
-                      tooltip: 'Show Snackbar',
                       onPressed: () {
                         appState.sethomeTabIndex(0);
                       },
