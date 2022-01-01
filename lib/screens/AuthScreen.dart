@@ -43,7 +43,7 @@ class AuthScreen extends StatelessWidget {
                 'assets/icons/logo.png',
               ),
               Text(
-                'Harmony Blog',
+                'Harmony',
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 30,
